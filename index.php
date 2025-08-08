@@ -3,12 +3,16 @@
 // TIPADO DINAMICO: no es necesario declarar el tipo de la variable, php infiere cual es el tipo y se puede cambiar.
 // TIPADO DEBIL: como javascript. Intenta convertir los tipos de variables segun sea necesario (los strings como numeros por ejemplo).
 // TIPADO GRADUAL: puedes indicar explicitamente los tipos de variables, es opcional en clases o funciones (y otros contextos especificos).
-$name = "Miguel";
+$name = "Adolfo";
 $isDev = true;
 $age = 39;
 $newAge = $age + '1'; // Asume ambos datos como números dado el signo + de suma. El simbolo + no sirve para concatenar texto.
 $agee = '39';
 $newAgee = $agee . '1'; // El punto es el operador que permite concatenar strings.
+$output = "Hola, soy $name y tengo $age años"; // Puedes usar variables dentro de un string con comillas dobles, no con comillas simples.
+$newOutput = 'Hola, soy $name y tengo $age años'; // Puedes usar variables dentro de un string con comillas simples, pero no evaluará las variables que hay dentro.
+$output .= ", con una edad de..."; // El operador .= permite concatenar y reasignar a la misma variable.
+$output2 = "Hola, soy \$name y tengo \$age años"; // Puedes usar backslash para escapar el símbolo de dólar y que no se interprete como una variable.
 
 // var_dump es una funcion de depuración para mostrar información estructurada sobre una variable o mas.
 var_dump($name);
@@ -39,7 +43,16 @@ echo is_int($age);
     <br>
     <?= $newAgee; ?>
     <br>
-    <?= "Hola " . $name; ?>
+    <?= "<script>alert('Hola')</script>Hola "  // puedes poner javascript dentro de un string, se renderiza directamenete ese alert al cargar la página
+        . $name
+        . "<br/> con una edad de " // puedes poner HTML dentro de un string, un BREAK por ejemplo
+        . $age; ?>
+    <br>
+    <?= $output; ?>
+    <br>
+    <?= $newOutput; ?>
+    <br>
+    <?= $output2; ?>
 </h1>
 
 <style>
