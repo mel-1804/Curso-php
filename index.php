@@ -33,10 +33,10 @@ echo is_int($age);
 
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// Definir constantes. No pueden cambiar su valor. A diferencia de las Variables, las Constantes son estáticas y no podrían formar de por ejemplo uin bucle, porque no funcionan en tiempo de ejecucion.
+// Definir Constantes. No pueden cambiar su valor. A diferencia de las Variables, las Constantes son estáticas y no podrían formar de por ejemplo uin bucle, porque no funcionan en tiempo de ejecucion.
 // Sino en tiempo de compilación. Para usar en un bucle se debería usar Variables.
 // CONSTANTE GLOBAL
-define('LOGO_URL', 'https://miweb.com/logo.png');
+define('LOGO_URL', 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/711px-PHP-logo.svg.png');
 
 // CONSTANTE LOCALES (DE CLASE). Siempre en mayusculas por convención.
 const NOMBRE = 'Adolfo';
@@ -44,7 +44,6 @@ const NOMBRE = 'Adolfo';
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // CONDICIONALES
 // Condicional Tradicional:
-
 $isOld = $age > 4;
 
 if ($isOld) {
@@ -55,6 +54,26 @@ if ($isOld) {
     echo "<h2> Eres joven, felicidades.</h2>";
 }
 
+
+// Condicional Ternaria:
+$outputAge = $isOld ? "<h2> Eres viejo, lo siento. </h2>" : "<h2> Eres joven, felicidades.</h2>";
+
+// Condicional Match (PHP 8.0+): directamente puedes asignarlo a una variable.
+$outputAge2 = match ($age) {
+    0, 1, 2 => "<h2> Eres un bebé. </h2>",
+    3, 4, 5, 6, 7, 8, 9, 10 => "<h2> Eres un niño. </h2>",
+    11, 12, 13, 14, 15, 16, 17, 18 => "<h2> Eres un adolescente. </h2>",
+    19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29 => "<h2> Eres un adulto joven. </h2>",
+    default => "<h2> Eres un adulto mayor, $name </h2>"
+};
+// Otra forma de usar Match, con condiciones más complejas:
+$outputAge3 = match (true) {
+    $age < 2 => "<h2> Eres un bebé. </h2>",
+    $age < 10 => "<h2> Eres un niño. </h2>",
+    $age < 18 => "<h2> Eres un adolescente. </h2>",
+    $age < 29 => "<h2> Eres un adulto joven. </h2>",
+    default => "<h2> Eres un adulto mayor, $name </h2>"
+};
 
 // Condicional Alternativo que ofrece PHP:
 ?>
@@ -67,9 +86,36 @@ if ($isOld) {
     <h2> Eres joven, felicidades.</h2>
 <?php endif; ?>
 
+<?php
+// ESTRUCTURAS DE DATOS--------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Arrays: Estructura de datos que permite almacenar múltiples valores en una sola variable.
+$bestLanguages = ['PHP', 'JavaScript', 'Python', 'Java', 'C#'];
+
+// Así insertamos elementos al final de en un array:
+
+$bestLanguages[] = 'C++'; // Añade C++ al final del array
+$bestLanguages[2] = 'Ruby'; // Añade Ruby en la posición 2 del array
+
+// Arrays Asociativos: Estructura de datos que permite almacenar pares clave-valor. (es parecido a un objeto).
+$person = [
+    'name' => 'Adolfo',
+    'age' => 39,
+    'isDev' => true,
+    'languages' => ['PHP', 'JavaScript', 'Python']
+];
+
+// Una vez definido se puede acceder a los valores de un array asociativo usando la clave e incluso modificarlo:
+$person['name'] = "Jose";
+$person["languages"][] = "Java";
 
 
-<h1>
+
+?>
+
+
+
+<h3>
+
     <?php echo "Mi primera app"; ?>
     <br>
     <?= "Curso de PHP"; ?>
@@ -90,15 +136,23 @@ if ($isOld) {
     <?= $newOutput; ?>
     <br>
     <?= $output2; ?>
-</h1>
+</h3>
 
-<style>
-    :root {
-        color-scheme: light dark;
-    }
+<h2> <?= $outputAge3 ?></h2>
 
-    body {
-        display: grid;
-        place-content: center;
-    }
-</style>
+<h3> el mejor lenguaje es <?= $bestLanguages[2] ?></h3>
+<ul>
+    <?php foreach ($bestLanguages as $key => $language) : ?>
+        <li><?= $key . " " . $language ?></li>
+    <?php endforeach; ?>
+
+    <style>
+        :root {
+            color-scheme: light dark;
+        }
+
+        body {
+            display: grid;
+            place-content: center;
+        }
+    </style>
