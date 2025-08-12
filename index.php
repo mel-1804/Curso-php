@@ -1,4 +1,5 @@
 <?php
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Nombrar variables. Al posicionarse sobre las variable te dice automaticamente el tipo de dato que es. 
 // TIPADO DINAMICO: no es necesario declarar el tipo de la variable, php infiere cual es el tipo y se puede cambiar.
 // TIPADO DEBIL: como javascript. Intenta convertir los tipos de variables segun sea necesario (los strings como numeros por ejemplo).
@@ -25,12 +26,48 @@ echo gettype($name);
 echo gettype($isDev);
 echo gettype($age);
 
-// Tambien existen distintos métodos para verificr si un dato es de un tipo específico
+// Tambien existen distintos métodos para verificar si un dato es de un tipo específico
 echo is_string($newAge);
 echo is_bool($isDev);
 echo is_int($age);
 
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Definir constantes. No pueden cambiar su valor. A diferencia de las Variables, las Constantes son estáticas y no podrían formar de por ejemplo uin bucle, porque no funcionan en tiempo de ejecucion.
+// Sino en tiempo de compilación. Para usar en un bucle se debería usar Variables.
+// CONSTANTE GLOBAL
+define('LOGO_URL', 'https://miweb.com/logo.png');
+
+// CONSTANTE LOCALES (DE CLASE). Siempre en mayusculas por convención.
+const NOMBRE = 'Adolfo';
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// CONDICIONALES
+// Condicional Tradicional:
+
+$isOld = $age > 4;
+
+if ($isOld) {
+    echo "<h2> Eres viejo, lo siento. </h2>";
+} elseif ($isDev) {
+    echo "<h2> No eres viejo pero eres dev. </h2>";
+} else {
+    echo "<h2> Eres joven, felicidades.</h2>";
+}
+
+
+// Condicional Alternativo que ofrece PHP:
 ?>
+
+<?php if ($isOld): ?>
+    <h2> Eres viejo, lo siento. </h2>
+<?php elseif ($isDev) : ?>
+    <h2> No eres viejo pero eres dev. </h2>
+<?php else: ?>
+    <h2> Eres joven, felicidades.</h2>
+<?php endif; ?>
+
+
 
 <h1>
     <?php echo "Mi primera app"; ?>
