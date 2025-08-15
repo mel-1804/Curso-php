@@ -38,9 +38,7 @@ curl_close($ch);
 
 
 <main>
-    <pre style="font-size: 15px; overflow: scroll; height: 450px;">
-        <?php var_dump($data); ?>
-    </pre>
+
 
     <section>
         <img src="<?= $data["poster_url"]; ?> width=" 200" alt="Poster de <?= $data["title"]; ?>"
