@@ -43,7 +43,7 @@ curl_close($ch);
     </pre>
 
     <section>
-        <img src="<?= $data["poster_url"]; ?> width=" 300" alt="Poster de <?= $data["title"]; ?>"
+        <img src="<?= $data["poster_url"]; ?> width=" 200" alt="Poster de <?= $data["title"]; ?>"
             style="border-radius: 16px" />
     </section>
 
@@ -52,3 +52,31 @@ curl_close($ch);
         <p>Fecha de estreno: <?= $data["release_date"]; ?></p>
         <p>La siguiente es: <?= $data["following_production"]["title"] ?></p>
 </main>
+
+<style>
+    :root {
+        color-scheme: light dark;
+    }
+
+    body {
+        display: grid;
+        place-content: center;
+    }
+
+    section {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+
+    hgroup {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+    img {
+        margin: 0 auto;
+    }
+</style>
